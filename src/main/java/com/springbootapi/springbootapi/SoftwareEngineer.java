@@ -1,16 +1,28 @@
 package com.springbootapi.springbootapi;
 // PostgreSQL is this socket: /var/run/postgresql/.s.PGSQL.5432"
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.List;
 
+@Entity
 public class SoftwareEngineer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private List<String> teckStack;
+    private String techStack;
 
-    public SoftwareEngineer(Integer id, String name, List<String>  teckStack) {
+    public SoftwareEngineer(Integer id, String name, String techStack) {
         this.id = id;
         this.name = name;
-        this.teckStack = teckStack;
+        this.techStack = techStack;
+    }
+
+    public SoftwareEngineer() {
+
     }
 
     public Integer getId() {
@@ -29,12 +41,12 @@ public class SoftwareEngineer {
         this.name = name;
     }
 
-    public List<String> getTeckStack() {
-        return teckStack;
+    public String getTeckStack() {
+        return techStack;
     }
 
-    public void setTeckStack(List<String> teckStack) {
-        this.teckStack = teckStack;
+    public void setTeckStack(String teckStack) {
+        this.techStack = teckStack;
     }
 
 }
