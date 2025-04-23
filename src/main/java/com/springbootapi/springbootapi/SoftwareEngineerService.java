@@ -24,8 +24,13 @@ public class SoftwareEngineerService {
         String prompt = """
                 Based on the program techstack that %s by %s tell me how cracked he is?"""
                 .formatted(softwareEngineer.getTeckStack(), softwareEngineer.getName());
-
-        String chatResponse = aiService.sendMessage(prompt);
+        try {
+            String chatResponse = aiService.sendMessage(prompt);
+        } catch (Exception e) {
+            System.out.println("ai error ur bokre");
+        }
+        String chatResponse = "Ai rview, but u have no money";
+        System.out.println("chatResponse: " + chatResponse);
         softwareEngineer.setAiReview(chatResponse);
         softwareEngineerRepo.save(softwareEngineer);
     }
